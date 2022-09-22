@@ -5,7 +5,7 @@ import hidden_4
 def print_name():
     name = dir(hidden_4)
     for i in name:
-        if i != '__':
+        if i[:2] != '__':
             print("{:s}".format(i))
 
 
