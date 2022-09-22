@@ -6,7 +6,7 @@ def print_name():
     name = dir(hidden_4)
     for i in name:
         if i != '__':
-            print("{:S}".format(i))
+            print("{:s}".format(i))
 
 
 if __name__ == "__main__":
