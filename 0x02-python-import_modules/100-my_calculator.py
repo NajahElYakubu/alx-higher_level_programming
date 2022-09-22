@@ -5,7 +5,7 @@ from calculator_1 import add, sub, mul, div
 
 def calculator(argv):
     n = len(argv) - 1
-
+    
     a = int(argv[1])
     operator = argv[2]
     b = int(argv[3])
