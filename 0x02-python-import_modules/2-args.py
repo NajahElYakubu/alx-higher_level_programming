@@ -9,7 +9,7 @@ def arg_print(argv):
     elif number == 1:
         print("{:d} argument:".format(number), end="\n")
     else:
-        print("{:d} arguments".format(number), end="\n")
+        print("{:d} arguments:".format(number), end="\n")
     i = 1
     while i <= number:
         print("{:d}: {:s}".format(i, argv[i]))
