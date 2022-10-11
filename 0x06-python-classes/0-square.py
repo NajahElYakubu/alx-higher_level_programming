@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-''' This module contains an empty class, Square'''
+""" This module describes an empty class, square """
 
-class Square:
+class square:
     ''' empty class that defines a Square'''
     pass
