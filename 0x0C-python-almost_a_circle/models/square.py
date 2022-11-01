@@ -1,24 +1,32 @@
-from models.rectangle import Rectangle
+#!/usr/bin/python3
 
-"""Defines a square model from rectangle"""
+"""Defines a square model from rectangle
+The rectangle class is also the super class
+of square"""
+
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
     """Square model: rectangle equal sides"""
 
     def __init__(self, size, x=0, y=0, id=None):
+        """Initializes instance variables"""
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
+        """Defines getter for size"""
         return self.width
 
     @size.setter
     def size(self, val):
+        """Defines setter for size"""
         self.width = val
         self.height = val
 
     def __str__(self):
+        """Overrides str behaviour"""
         tmp = super().__str__()
         return tmp[:tmp.rfind('/')]
 
@@ -27,7 +35,7 @@ class Square(Rectangle):
 
         L = len(args)
         if L:
-            if L > 2:
+            if L > 1:
                 args = list(args)
                 args.insert(1, args[1])
             return super().update(*args)
@@ -36,6 +44,7 @@ class Square(Rectangle):
                 _w = kwargs['size']
                 del kwargs['size']
                 kwargs['width'] = _w
+                kwargs['height'] = _w
             super().update(**kwargs)
 
     def to_dictionary(self):

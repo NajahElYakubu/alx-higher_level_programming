@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+
+"""Defines the base model for all our classes
+All common functions are also defined in the class"""
+
 import json
-import turtle as ttl
 from random import random as rn
 from time import sleep
-
-"""Defines the base model for all our classes"""
 
 
 class Base:
@@ -22,19 +23,21 @@ class Base:
             self.id = id
 
     def validate_size(self, name, val, low=1):
-        if not isinstance(val, int):
+        """Validate sizes of shape"""
+        if type(val) != int:
             raise TypeError(f"{name} must be an integer")
         if val < low:
             op = ">" if low else ">="
-            raise ValueError(f"{name} must be {op} {low}")
+            raise ValueError(f"{name} must be {op} 0")
 
     def to_csv_str(self):
         """a default csv serializer"""
         return str(self.id)
 
-    def to_json_string(list_dicts: list):
-        """Convert to Json strings"""
-        if list_dicts is None or list_dicts == []:
+    @staticmethod
+    def to_json_string(list_dicts):
+        """Convert list to Json strings"""
+        if list_dicts is None or len(list_dicts) == 0:
             return "[]"
         return json.dumps(list_dicts)
 
@@ -47,7 +50,9 @@ class Base:
     @classmethod
     def create(cls, **kwargs):
         """Create an instance from a dict"""
-        _dummy = cls(1, 1, 1)
+        if kwargs is None:
+            return None
+        _dummy = cls(1, 1) if cls.__name__ == "Rectangle" else cls(1)
         _dummy.update(**kwargs)
         return _dummy
 
@@ -123,7 +128,7 @@ class Base:
         except FileNotFoundError as fe:
             return []
 
-    def _draw_shape(shape, pen=ttl.Turtle()):
+    def _draw_shape(shape, pen):
         """Draws a shape using gui"""
         pen.fillcolor(rn(), rn(), rn())
         pen.up()
